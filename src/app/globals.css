@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #121115;
+  --color-surface: #1a181f;
+  --color-foreground: #f1eff5;
+  --color-muted: #aaa5b3;
+  --color-line: #35303e;
+  --color-accent: #c4a0ff;
+  --color-accent-hover: #d6bdff;
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: "Courier New", monospace;
+}
+
+@layer base {
+  html { color-scheme: dark; scroll-behavior: smooth; scroll-padding-top: 6rem; }
+  body { @apply m-0 bg-background font-sans text-foreground antialiased; }
+  a { @apply transition-colors; }
+  a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 6px; }
+  ::selection { background: var(--color-accent); color: var(--color-background); }
+}
+
+@layer components {
+  .page-container { width: min(1120px, calc(100% - 96px)); margin-inline: auto; }
+  .eyebrow { @apply font-mono text-xs leading-relaxed tracking-[0.09em] text-accent; }
+  .section-title { @apply mt-4 text-[clamp(32px,3.5vw,44px)] leading-[1.12] font-medium tracking-[-0.04em]; }
+  .primary-link { @apply inline-flex items-center gap-12 rounded-md bg-accent px-6 py-[19px] text-[15px] font-bold text-background hover:bg-accent-hover; }
+
+  .about-monogram {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    width: 80px;
+    height: 80px;
+    place-items: center;
+    border: 1px solid var(--color-accent);
+    border-radius: 20px;
+    background: var(--color-accent);
+    color: var(--color-background);
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: -3px;
+    transition: background-color 300ms ease, color 300ms ease;
+  }
+
+  .about-monogram > span { position: relative; padding-bottom: 5px; }
+
+  .about-monogram::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 12px;
+    border-radius: inherit;
+    background: var(--color-accent);
+    filter: blur(16px);
+    opacity: 0;
+    transform: translateX(-12px) scaleX(0.7);
+    pointer-events: none;
+    transition: opacity 350ms ease, transform 500ms ease;
+  }
+
+  .about-monogram:hover {
+    background: transparent;
+    color: var(--color-accent);
+  }
+
+  .about-monogram:hover::before {
+    opacity: 0.55;
+    transform: translateX(12px) scaleX(1.65);
+  }
+}
+
+@media (max-width: 760px) {
+  html { scroll-padding-top: 5rem; }
+  .page-container { width: calc(100% - 40px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}

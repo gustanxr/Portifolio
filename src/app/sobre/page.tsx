@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const skills = [
-  { number: "01", title: "Desenvolvimento", description: "Conhecimentos em desenvolvimento de APIs com C#, .NET 8.0 e Swagger, além de desenvolvimento front-end.", tags: ["C#", ".NET 8.0", "Swagger", "Front-end"] },
+  { number: "01", title: "Desenvolvimento", description: "Conhecimentos em desenvolvimento de APIs com C#, .NET 8.0 e Swagger, além de desenvolvimento front-end. Atualmente, também estudo Java.", tags: ["C#", "Java", ".NET 8.0", "Swagger", "Front-end"] },
   { number: "02", title: "Dados e infraestrutura", description: "Desenvolvimento e manipulação de bancos de dados com SQL Server Management Studio, com estudos em redes, infraestrutura e manutenção de hardware.", tags: ["SQL Server", "Redes", "Infraestrutura", "Hardware"] },
   { number: "03", title: "Pessoas e processos", description: "Comunicação clara, empatia e adaptabilidade no atendimento. Resiliência para lidar com desafios e conhecimento sobre Scrum.", tags: ["Comunicação", "Empatia", "Resolução de problemas", "Scrum"] },
 ];
@@ -24,14 +24,14 @@ export default function AboutPage() {
             <div>
               <p className="eyebrow">SOBRE MIM / GUSTAVO FIORILLO</p>
               <h1 id="titulo-sobre" className="mt-6 text-[clamp(42px,5.7vw,72px)] leading-[1.06] font-medium tracking-[-0.05em]">Aprender, criar.<br /><span className="text-accent">Evoluir com<br />cada experiência.</span></h1>
-              <p className="mt-7 max-w-xl text-lg leading-[1.8] text-muted">Sou Gustavo Fiorillo. Minha trajetória reúne o interesse por tecnologia e a experiência de trabalhar com pessoas. Busco oportunidades para colocar meus conhecimentos em prática e continuar crescendo na área de TI.</p>
+              <p className="mt-7 max-w-xl text-lg leading-[1.8] text-muted">Sou Gustavo Fiorillo. Atualmente, curso Engenharia de Software na Universidade São Judas Tadeu (USJT) e estudo Java. Minha trajetória reúne o interesse por tecnologia e a experiência de trabalhar com pessoas. Busco oportunidades para colocar meus conhecimentos em prática e continuar crescendo na área de TI.</p>
             </div>
             <aside aria-label="Meu perfil" className="rounded-2xl border border-line bg-surface p-8 max-[760px]:p-6">
               <div aria-hidden="true" className="about-monogram mb-8"><span>gf.</span></div>
               <p className="text-2xl font-medium tracking-tight">Gustavo Fiorillo</p>
               <p className="mt-2 text-sm leading-relaxed text-muted">Tecnologia da Informação</p>
               <dl className="mt-8 space-y-5 border-t border-line pt-6 text-sm">
-                <div><dt className="text-muted">Formação</dt><dd className="mt-1">Curso profissionalizante em TI · SENAC</dd></div>
+                <div><dt className="text-muted">Formação</dt><dd className="mt-1">Engenharia de Software · USJT</dd></div>
                 <div><dt className="text-muted">Áreas de interesse</dt><dd className="mt-1 leading-relaxed">Desenvolvimento, APIs e banco de dados</dd></div>
                 <div><dt className="text-muted">Meu próximo passo</dt><dd className="mt-1 leading-relaxed">Aprender e crescer profissionalmente em TI</dd></div>
               </dl>
@@ -67,6 +67,7 @@ export default function AboutPage() {
         <section id="formacao" aria-labelledby="titulo-formacao" className="page-container grid grid-cols-[1fr_1.3fr] gap-16 border-t border-line py-20 max-[760px]:grid-cols-1 max-[760px]:gap-8 max-[760px]:py-14">
           <div><p className="eyebrow">03 / FORMAÇÃO</p><h2 id="titulo-formacao" className="section-title">A base da<br />minha caminhada.</h2></div>
           <ol className="space-y-9 border-l border-line pl-7">
+            <li><p className="font-mono text-xs text-accent">EM ANDAMENTO</p><h3 className="mt-3 text-xl font-medium">Engenharia de Software</h3><p className="mt-2 text-muted">Universidade São Judas Tadeu (USJT)</p></li>
             <li><p className="font-mono text-xs text-accent">2023 — 2025</p><h3 className="mt-3 text-xl font-medium">Curso profissionalizante em TI</h3><p className="mt-2 text-muted">SENAC</p><p className="mt-4 text-sm leading-[1.8] text-muted">Estudos em programação de soluções computacionais, desenvolvimento C#, redes e infraestrutura e manutenção de hardware.</p></li>
             <li><p className="font-mono text-xs text-accent">2021 — 2023</p><h3 className="mt-3 text-xl font-medium">Ensino médio completo</h3><p className="mt-2 text-muted">Rev. Tercio Moraes Pereira</p></li>
           </ol>

@@ -1,4 +1,5 @@
 import { site } from "@/config/site";
+import { ArrowUpRightIcon } from "@/components/ui/arrow-up-right-icon";
 
 export function Hero() {
   return (
@@ -12,7 +13,7 @@ export function Hero() {
       </h1>
       <div className="flex items-center justify-between gap-10 pb-[58px] max-[760px]:flex-col max-[760px]:items-start max-[760px]:gap-6 max-[760px]:pb-9">
         <p className="max-w-[440px] text-[17px] leading-[1.7] text-muted">{site.introduction}</p>
-        <a className="primary-link shrink-0" href="#projetos">Explorar projetos <span aria-hidden="true" className="text-2xl">↪︎</span></a>
+        <a className="primary-link shrink-0" href="#projetos">Explorar projetos <ArrowUpRightIcon className="size-5" /></a>
       </div>
       <div className="flex items-center justify-between gap-4 border-t border-line py-5 font-mono text-xs tracking-[0.08em] text-muted">
         <span>CRIAÇÃO · APRENDIZADO · EVOLUÇÃO</span><span aria-hidden="true" className="text-xl text-accent">↓</span>

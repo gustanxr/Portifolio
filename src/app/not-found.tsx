@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowUpRightIcon } from "@/components/ui/arrow-up-right-icon";
 
 export default function NotFound() {
   return (
@@ -6,7 +7,7 @@ export default function NotFound() {
       <span className="eyebrow">404 / PÁGINA NÃO ENCONTRADA</span>
       <h1 className="section-title">Esse caminho ainda não existe.</h1>
       <p className="my-6 text-muted">Volte ao início para explorar o portfólio.</p>
-      <Link href="/" className="primary-link">Voltar ao início <span aria-hidden="true">↗</span></Link>
+      <Link href="/" className="primary-link">Voltar ao início <ArrowUpRightIcon className="size-4" /></Link>
     </main>
   );
 }

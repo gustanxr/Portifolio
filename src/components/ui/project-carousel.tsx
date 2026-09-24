@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { Project } from "@/types/project";
 import { ProjectCard } from "@/components/ui/project-card";
 
@@ -13,11 +13,28 @@ export function ProjectCarousel({ projects }: { projects: readonly Project[] }) 
   const [paused, setPaused] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
+  const slidesRef = useRef<HTMLDivElement>(null);
+  const [slideHeight, setSlideHeight] = useState<number | null>(null);
   const results = projects
     .map((project, index) => ({ project, number: index + 1 }))
     .filter(({ project }) => normalize(project.title).includes(normalize(query)));
   const count = results.length;
   const current = count ? activeIndex % count : 0;
+
+  useLayoutEffect(() => {
+    const slides = slidesRef.current;
+    const activeSlide = slides?.children[current];
+    if (!(activeSlide instanceof HTMLElement)) {
+      setSlideHeight(null);
+      return;
+    }
+
+    const updateHeight = () => setSlideHeight(activeSlide.getBoundingClientRect().height);
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(activeSlide);
+    return () => observer.disconnect();
+  }, [current, count, query]);
 
   useEffect(() => {
     if (count < 2 || paused || hovered || focused) return;
@@ -65,10 +82,10 @@ export function ProjectCarousel({ projects }: { projects: readonly Project[] }) 
           onFocusCapture={() => setFocused(true)}
           onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}
         >
-          <div id="project-slides" className="overflow-hidden rounded-lg">
-            <div className="flex items-stretch transition-transform duration-500 ease-in-out motion-reduce:transition-none" style={{ transform: `translateX(-${current * 100}%)` }}>
+          <div id="project-slides" className="overflow-hidden rounded-lg transition-[height] duration-500 ease-in-out motion-reduce:transition-none" style={slideHeight === null ? undefined : { height: `${slideHeight}px` }}>
+            <div ref={slidesRef} className="flex items-start transition-transform duration-500 ease-in-out motion-reduce:transition-none" style={{ transform: `translateX(-${current * 100}%)` }}>
               {results.map(({ project, number }, index) => (
-                <div key={project.slug} role="group" aria-roledescription="slide" aria-label={`${index + 1} de ${count}`} aria-hidden={index !== current} inert={index !== current} className="w-full min-w-0 shrink-0 [&>article]:h-full">
+                <div key={project.slug} role="group" aria-roledescription="slide" aria-label={`${index + 1} de ${count}`} aria-hidden={index !== current} inert={index !== current} className="w-full min-w-0 shrink-0">
                   <ProjectCard project={project} number={number} />
                 </div>
               ))}

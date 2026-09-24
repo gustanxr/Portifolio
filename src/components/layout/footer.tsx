@@ -1,6 +1,7 @@
 import { site } from "@/config/site";
 import Link from "next/link";
 import { TechnologyIcon, type Technology } from "@/components/ui/technology-icon";
+import { ArrowUpRightIcon } from "@/components/ui/arrow-up-right-icon";
 
 const technologies: readonly { name: Technology; documentation: string }[] = [
   { name: "Next.js", documentation: "https://nextjs.org/docs" },
@@ -32,7 +33,7 @@ export function Footer() {
               >
                 <span className="text-accent"><TechnologyIcon technology={technology.name} /></span>
                 {technology.name}
-                <span aria-hidden="true" className="text-accent">↗</span>
+                <ArrowUpRightIcon className="size-3.5 text-accent" />
               </a>
             </li>
           ))}

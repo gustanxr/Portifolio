@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { site } from "@/config/site";
+import { ArrowUpRightIcon } from "@/components/ui/arrow-up-right-icon";
 
 export const metadata: Metadata = {
   title: "Sobre mim — Gustavo Fiorillo",
@@ -76,7 +77,7 @@ export default function AboutPage() {
         <section id="proximos-passos" aria-labelledby="titulo-conversa" className="page-container pb-20 max-[760px]:pb-14">
           <div className="flex items-center justify-between gap-8 rounded-2xl border border-accent/20 bg-accent/5 p-10 max-[760px]:flex-col max-[760px]:items-start max-[760px]:p-6">
             <div><p className="eyebrow">PRÓXIMOS PASSOS</p><h2 id="titulo-conversa" className="section-title">Vamos conversar?</h2><p className="mt-4 max-w-lg text-base leading-relaxed text-muted">Estou em busca de oportunidades para aprender, contribuir e desenvolver minha carreira em tecnologia.</p></div>
-            <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="primary-link shrink-0" aria-label="Conversar pelo LinkedIn (abre em nova aba)">Meu LinkedIn <span aria-hidden="true">↗</span></a>
+            <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="primary-link shrink-0" aria-label="Conversar pelo LinkedIn (abre em nova aba)">Meu LinkedIn <ArrowUpRightIcon className="size-4" /></a>
           </div>
         </section>
       </main>

@@ -1,16 +1,26 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { site } from "@/config/site";
+import styles from "./header.module.css";
 
 export function Header({ variant = "home" }: { variant?: "home" | "about" }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [floating, setFloating] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
 
+  useEffect(() => {
+    const updatePosition = () => setFloating(window.scrollY > 32);
+    updatePosition();
+    window.addEventListener("scroll", updatePosition, { passive: true });
+    return () => window.removeEventListener("scroll", updatePosition);
+  }, []);
+
   return (
+    <div className={styles.anchor}>
     <header
-      className="sticky top-0 z-50 border-b border-line/60 bg-background/65 backdrop-blur-xl backdrop-saturate-150"
+      className={`${styles.header} ${floating ? styles.floating : ""}`}
       onKeyDown={(event) => {
         if (event.key === "Escape" && menuOpen) {
           setMenuOpen(false);
@@ -21,15 +31,15 @@ export function Header({ variant = "home" }: { variant?: "home" | "about" }) {
         if (!event.currentTarget.contains(event.relatedTarget)) setMenuOpen(false);
       }}
     >
-      <div className="page-container flex min-h-20 items-center justify-between gap-6 py-3 max-[1000px]:min-h-16 max-[1000px]:py-2">
+      <div className={`${styles.inner} flex items-center justify-between gap-6`}>
       {variant === "about" ? (
         <Link href="/" onClick={() => setMenuOpen(false)} className="inline-flex shrink-0 items-center gap-3 rounded-md bg-accent px-5 py-3 text-sm font-bold text-background hover:bg-accent-hover">
           <span aria-hidden="true">←</span> Voltar ao início
         </Link>
       ) : (
       <Link href="/#inicio" onClick={() => setMenuOpen(false)} aria-label={`${site.name} — início`} className="inline-flex items-center text-[23px] font-bold tracking-[-1px] hover:text-accent">
-        <span aria-hidden="true" className="mr-3 grid size-9 place-items-center rounded-[10px] bg-accent pb-1 text-[26px] text-background">g.</span>
-        {site.name}<span className="text-accent">.</span>
+        <span aria-hidden="true" className="mr-3 font-mono text-3xl font-bold text-accent">g.</span>
+        <span className="text-sm font-normal tracking-normal">gustanxr</span>
       </Link>
       )}
       <button
@@ -51,7 +61,7 @@ export function Header({ variant = "home" }: { variant?: "home" | "about" }) {
         onClick={(event) => {
           if ((event.target as HTMLElement).closest("a")) setMenuOpen(false);
         }}
-        className={`flex items-center gap-8 text-sm max-[1000px]:absolute max-[1000px]:inset-x-0 max-[1000px]:top-full max-[1000px]:flex-col max-[1000px]:items-stretch max-[1000px]:gap-1 max-[1000px]:border-b max-[1000px]:border-line max-[1000px]:bg-background/95 max-[1000px]:px-5 max-[1000px]:py-3 max-[1000px]:shadow-xl max-[1000px]:[&>a]:rounded-md max-[1000px]:[&>a]:px-3 max-[1000px]:[&>a]:py-3 ${menuOpen ? "" : "max-[1000px]:hidden"}`}
+        className={`${styles.navigation} flex items-center gap-8 text-sm max-[1000px]:absolute max-[1000px]:inset-x-0 max-[1000px]:top-full max-[1000px]:flex-col max-[1000px]:items-stretch max-[1000px]:gap-1 max-[1000px]:px-5 max-[1000px]:py-3 max-[1000px]:[&>a]:rounded-md max-[1000px]:[&>a]:px-3 max-[1000px]:[&>a]:py-3 ${menuOpen ? "" : "max-[1000px]:hidden"}`}
       >
         {variant === "about" ? (
           <>
@@ -88,5 +98,6 @@ export function Header({ variant = "home" }: { variant?: "home" | "about" }) {
       </nav>
       </div>
     </header>
+    </div>
   );
 }

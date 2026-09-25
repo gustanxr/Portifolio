@@ -1,6 +1,6 @@
 # gustanxr — Portfólio
 
-Portfólio em Next.js App Router, React, TypeScript e Tailwind CSS. Mantém o desenho original com fundo escuro e detalhes roxos. A lista de projetos começa vazia; nenhum trabalho fictício foi incluído.
+Portfólio em Next.js App Router, React, TypeScript e Tailwind CSS. Visual com fundo escuro, paleta roxa, títulos sem serifa e detalhes de tipografia monoespaçada. A abertura inclui uma ilustração de uma estação de desenvolvimento. Apresenta os projetos reais, a trajetória e os interesses em Fullstack e DevOps de Gustavo Fiorillo.
 
 ## Começar
 
@@ -27,7 +27,7 @@ src/
     sections/           Apresentação, projetos e sobre
     ui/                 Cartão reutilizável para futuros projetos
   config/site.ts        Nome, GitHub, descrição e textos pessoais
-  data/projects.ts      Lista de projetos, inicialmente vazia
+  data/projects.ts      Lista dos projetos publicados e estudos
   types/project.ts      Estrutura tipada de um projeto
 public/                 Arquivos estáticos e favicon
 .github/workflows/      Compilação e publicação pelo GitHub Actions
@@ -37,12 +37,12 @@ Os componentes são Server Components por padrão. O carrossel de projetos usa u
 
 ## Personalizar
 
-- **Nome, GitHub e apresentação:** `src/config/site.ts`.
+- **Nome, GitHub, apresentação e interesses:** `src/config/site.ts`.
 - **Título principal:** `src/components/sections/hero.tsx`.
-- **Roxo e demais cores:** variáveis `--color-*` no bloco `@theme` de `src/app/globals.css`.
+- **Paleta e tipografia:** variáveis `--color-*` no bloco `@theme` de `src/app/globals.css`.
 - **Projetos futuros:** adicione itens em `src/data/projects.ts`, seguindo o tipo `Project`. Os campos obrigatórios são `slug`, `title`, `description` e `technologies`; `repositoryUrl` e `liveUrl` são opcionais. O estado “Em breve” é substituído pelos cartões automaticamente.
-- **Números e ícones dos cards:** a numeração (01, 02, 03…) acompanha a ordem dos projetos. Basta preencher `technologies`, por exemplo `["Java", "React", "TypeScript"]`, para mostrar os ícones. Java, JavaScript, HTML, CSS, Next.js, React, TypeScript e Tailwind CSS têm ícones próprios; outros nomes recebem um ícone genérico de código. Novos ícones podem ser cadastrados em `src/components/ui/technology-icon.tsx`.
-- **Carrossel e pesquisa:** novos projetos entram automaticamente no carrossel, com um card por vez, setas e avanço a cada 5 segundos. Para mudar o intervalo, ajuste `AUTOPLAY_DELAY` em `src/components/ui/project-carousel.tsx`. O avanço pausa com o mouse sobre o carrossel, foco dentro dele ou pelo botão Pausar; respeita a preferência por movimento reduzido. A busca filtra pelo título sem diferenciar maiúsculas e acentos, preservando a numeração original dos cards.
+- **Ícones dos projetos:** preencha `technologies`, por exemplo `["Java", "React", "TypeScript"]`. Novos ícones podem ser cadastrados em `src/components/ui/technology-icon.tsx`. Os projetos e seções não usam numeração decorativa.
+- **Carrossel e pesquisa:** novos projetos entram automaticamente no carrossel, com um card por vez, setas e avanço a cada 5 segundos. Para mudar o intervalo, ajuste `AUTOPLAY_DELAY` em `src/components/ui/project-carousel.tsx`. O avanço pausa com o mouse sobre o carrossel, foco dentro dele ou pelo botão Pausar; respeita a preferência por movimento reduzido. A busca filtra por título, descrição e tecnologias sem diferenciar maiúsculas e acentos. Também é possível escolher um projeto pelo nome abaixo do carrossel.
 
 ## Verificar e compilar
 
@@ -69,7 +69,7 @@ No GitHub Free, o repositório precisa ser público para usar Pages. GitHub Pro 
 
 ### Verificação desta entrega
 
-TypeScript e ESLint verificados localmente. O Next.js compilou a página com sucesso usando Turbopack, mas a exportação completa não pôde ser concluída neste ambiente devido à restrição de criação de processos (`spawn EPERM`). O workflow incluído executa as verificações e a compilação completa no GitHub Actions; ele ainda não foi executado no seu repositório.
+TypeScript, ESLint e exportação estática de produção verificados localmente. A revisão visual no navegador não foi realizada porque o conector estava indisponível.
 
 - https://nextjs.org/docs/app/guides/static-exports
 - https://tailwindcss.com/docs/installation/framework-guides/nextjs

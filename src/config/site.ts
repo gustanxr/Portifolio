@@ -1,12 +1,16 @@
 export const site = {
   name: "Gustavo",
   title: "gustanxr — Portfólio",
-  description: "Portfólio pessoal de Gustavo Fiorillo. Um espaço para compartilhar projetos, ideias e aprendizados.",
+  description: "Gustavo Fiorillo, estudante de Engenharia de Software. Projetos, estudos e interesse em desenvolvimento Fullstack e DevOps.",
   github: "https://github.com/gustanxr",
   linkedin: "https://www.linkedin.com/in/gustavo-fiorillo-30b2b832b/",
-  introduction: "Este é o meu espaço para compartilhar o que crio, o que aprendo e os próximos passos da minha trajetória.",
+  introduction: "Estudo Engenharia de Software na USJT. Aqui reúno os sites que desenvolvo, meus estudos em programação e o que estou aprendendo pelo caminho.",
+  interests: [
+    { title: "Fullstack", description: "Quero conectar o que aparece na tela ao que acontece na API e no banco de dados." },
+    { title: "DevOps", description: "Quero entender melhor como publicar, automatizar entregas e manter uma aplicação funcionando." },
+  ],
   about: [
-    "Sou Gustavo Fiorillo, com formação na área de Tecnologia da Informação pelo SENAC e conhecimentos em desenvolvimento de APIs com C# e .NET, front-end e banco de dados.",
-    "Minha experiência com atendimento ao público me ensinou a ouvir, comunicar com clareza e buscar soluções. Quero levar esse olhar para a tecnologia, aprender na prática e crescer como profissional.",
+    "Minha base em TI veio do SENAC, onde estudei C#, APIs com .NET, front-end e banco de dados. Hoje curso Engenharia de Software na USJT e também estudo Java.",
+    "Minha experiência com atendimento ao público me ensinou a ouvir o problema e explicar uma solução. Isso faz parte da minha bagagem. Agora busco minha próxima oportunidade em tecnologia.",
   ],
 } as const;

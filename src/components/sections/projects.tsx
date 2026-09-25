@@ -4,10 +4,10 @@ import { ProjectCarousel } from "@/components/ui/project-carousel";
 export function Projects() {
   const hasProjects = projects.length > 0;
   return (
-    <section id="projetos" aria-labelledby="titulo-projetos" className="page-container pt-[76px] max-[760px]:pt-11">
+    <section id="projetos" aria-labelledby="titulo-projetos" className="page-container border-t border-line pt-14 max-[760px]:pt-11">
       <div className="mb-[34px] flex items-end justify-between gap-6 max-[760px]:flex-col max-[760px]:items-start max-[760px]:gap-4">
-        <div><span className="eyebrow">01 / PROJETOS</span><h2 id="titulo-projetos" className="section-title">{hasProjects ? "Ideias em prática." : "O que vem por aí."}</h2></div>
-        <p className="pb-1 text-sm text-muted">{hasProjects ? "Uma seleção dos meus trabalhos." : "Uma coleção que está só começando."}</p>
+        <div><span className="eyebrow">Feitos por mim</span><h2 id="titulo-projetos" className="section-title">Projetos & estudos.</h2></div>
+        <p className="pb-1 text-sm text-muted">{hasProjects ? "Sites publicados e exercícios de programação." : "Os próximos projetos vão aparecer aqui."}</p>
       </div>
       {hasProjects ? (
         <ProjectCarousel projects={projects} />
@@ -19,7 +19,6 @@ export function Projects() {
             <h3 className="mt-5 mb-3 text-[25px] leading-tight font-medium tracking-tight">O primeiro projeto começa aqui.</h3>
             <p className="max-w-[440px] text-[15px] leading-[1.7] text-muted">Novos trabalhos vão ocupar este espaço, com suas ideias, processos e resultados.</p>
           </div>
-          <span aria-hidden="true" className="ml-auto self-end font-mono text-sm text-muted max-[760px]:absolute max-[760px]:top-7 max-[760px]:right-6">01</span>
         </div>
       )}
     </section>

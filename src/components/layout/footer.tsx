@@ -17,7 +17,7 @@ export function Footer() {
   return (
     <footer className="page-container flex flex-wrap items-center justify-between gap-6 border-t border-line py-[30px]">
       <Link className="text-xl font-bold tracking-tight hover:text-accent" href="/#inicio">{site.name}<span className="text-accent">.</span></Link>
-      <p className="text-sm text-muted">Feito para compartilhar o que vem a seguir.</p>
+      <p className="text-sm text-muted">Gustavo Fiorillo · Fullstack & DevOps</p>
       <a className="text-sm text-muted hover:text-accent" href="#inicio">Voltar ao topo <span aria-hidden="true" className="ml-4 text-accent">↑</span></a>
       <div className="flex w-full flex-wrap items-center gap-x-6 gap-y-4 border-t border-line pt-6">
         <p className="font-mono text-xs tracking-wide text-muted">Desenvolvido com</p>
@@ -29,7 +29,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Documentação de ${technology.name} (abre em nova aba)`}
-                className="inline-flex min-h-11 items-center gap-2 rounded-md border border-line bg-surface px-3 py-2 text-xs text-muted transition-[color,background-color,border-color,transform,box-shadow] duration-200 hover:border-accent hover:bg-accent/10 hover:text-accent hover:shadow-[0_4px_16px_-6px_var(--color-accent)] focus-visible:border-accent focus-visible:bg-accent/10 focus-visible:text-accent motion-safe:hover:-translate-y-1"
+                className="inline-flex min-h-11 items-center gap-2 px-1 py-2 text-xs text-muted transition-[color,background-color,border-color,transform,box-shadow] duration-200 hover:border-accent hover:bg-accent/10 hover:text-accent focus-visible:border-accent focus-visible:bg-accent/10 focus-visible:text-accent"
               >
                 <span className="text-accent"><TechnologyIcon technology={technology.name} /></span>
                 {technology.name}

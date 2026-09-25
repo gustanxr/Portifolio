@@ -32,7 +32,7 @@ export function Hero() {
           <span>Da interface ao deploy.</span><span className="text-accent" aria-hidden="true">&lt;/&gt;</span>
         </figcaption>
       </figure>
-      <aside aria-labelledby="titulo-interesses" className="interest-note">
+      <aside data-reveal aria-labelledby="titulo-interesses" className="interest-note">
         <div>
           <p id="titulo-interesses" className="eyebrow">Áreas de interesse</p>
           <p className="mt-3 font-mono text-xs leading-loose text-muted">Base: C# · .NET · SQL<br />Estudando: Java</p>

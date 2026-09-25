@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { PageContent } from "@/components/layout/page-content";
 import { site } from "@/config/site";
 import { ArrowUpRightIcon } from "@/components/ui/arrow-up-right-icon";
 
@@ -19,7 +20,7 @@ export default function AboutPage() {
   return (
     <>
       <Header variant="about" />
-      <main id="conteudo">
+      <PageContent scrollToTop>
         <section id="inicio" aria-labelledby="titulo-sobre" className="page-container py-16 max-[760px]:py-10">
           <div className="grid grid-cols-[1.4fr_1fr] items-start gap-16 max-[760px]:grid-cols-1 max-[760px]:gap-9">
             <div>
@@ -40,7 +41,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section id="minha-trajetoria" aria-labelledby="titulo-trajetoria" className="page-container grid grid-cols-[1fr_1.3fr] gap-16 border-t border-line py-20 max-[760px]:grid-cols-1 max-[760px]:gap-7 max-[760px]:py-14">
+        <section data-reveal id="minha-trajetoria" aria-labelledby="titulo-trajetoria" className="page-container grid grid-cols-[1fr_1.3fr] gap-16 border-t border-line py-20 max-[760px]:grid-cols-1 max-[760px]:gap-7 max-[760px]:py-14">
           <div><p className="eyebrow">Minha trajetória</p><h2 id="titulo-trajetoria" className="section-title">Como cheguei<br />até aqui.</h2></div>
           <div className="space-y-5 text-[17px] leading-[1.8] text-muted">
             <p>Na minha formação em TI pelo SENAC, estudei programação de soluções computacionais, desenvolvimento em C#, redes, infraestrutura e manutenção de hardware. Também desenvolvi conhecimentos em APIs com .NET 8.0 e Swagger, front-end e manipulação de bancos de dados.</p>
@@ -50,10 +51,10 @@ export default function AboutPage() {
         </section>
 
         <section id="competencias" aria-labelledby="titulo-competencias" className="page-container border-t border-line py-20 max-[760px]:py-14">
-          <p className="eyebrow">Conhecimentos</p><h2 id="titulo-competencias" className="section-title">O que já estudei e pratiquei.</h2>
+          <div data-reveal><p className="eyebrow">Conhecimentos</p><h2 id="titulo-competencias" className="section-title">O que já estudei e pratiquei.</h2></div>
           <div className="mt-10 divide-y divide-line">
             {skills.map((skill) => (
-              <article key={skill.title} className="grid grid-cols-[1fr_1.4fr_1fr] items-start gap-8 py-8 max-[900px]:grid-cols-1 max-[900px]:gap-4">
+              <article data-reveal key={skill.title} className="grid grid-cols-[1fr_1.4fr_1fr] items-start gap-8 py-8 max-[900px]:grid-cols-1 max-[900px]:gap-4">
                 <h3 className="text-xl font-medium tracking-tight">{skill.title}</h3>
                 <p className="text-sm leading-[1.8] text-muted">{skill.description}</p>
                 <ul aria-label={`Conhecimentos em ${skill.title.toLowerCase()}`} className="flex flex-wrap gap-2">
@@ -64,7 +65,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section id="formacao" aria-labelledby="titulo-formacao" className="page-container grid grid-cols-[1fr_1.3fr] gap-16 border-t border-line py-20 max-[760px]:grid-cols-1 max-[760px]:gap-8 max-[760px]:py-14">
+        <section data-reveal id="formacao" aria-labelledby="titulo-formacao" className="page-container grid grid-cols-[1fr_1.3fr] gap-16 border-t border-line py-20 max-[760px]:grid-cols-1 max-[760px]:gap-8 max-[760px]:py-14">
           <div><p className="eyebrow">Formação</p><h2 id="titulo-formacao" className="section-title">Onde tenho<br />aprendido.</h2></div>
           <ol className="space-y-9 border-l border-line pl-7">
             <li><p className="font-mono text-xs text-accent">EM ANDAMENTO</p><h3 className="mt-3 text-xl font-medium">Engenharia de Software</h3><p className="mt-2 text-muted">Universidade São Judas Tadeu (USJT)</p></li>
@@ -73,13 +74,13 @@ export default function AboutPage() {
           </ol>
         </section>
 
-        <section id="proximos-passos" aria-labelledby="titulo-conversa" className="page-container pb-20 max-[760px]:pb-14">
+        <section data-reveal id="proximos-passos" aria-labelledby="titulo-conversa" className="page-container pb-20 max-[760px]:pb-14">
           <div className="flex items-center justify-between gap-8 border-t border-accent/50 bg-surface p-10 max-[760px]:flex-col max-[760px]:items-start max-[760px]:p-6">
             <div><p className="eyebrow">Contato</p><h2 id="titulo-conversa" className="section-title">Vamos conversar?</h2><p className="mt-4 max-w-lg text-base leading-relaxed text-muted">Tem uma oportunidade em desenvolvimento ou quer conversar sobre algum projeto? Pode me chamar pelo LinkedIn.</p></div>
             <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="primary-link shrink-0" aria-label="Conversar pelo LinkedIn (abre em nova aba)">Meu LinkedIn <ArrowUpRightIcon className="size-4" /></a>
           </div>
         </section>
-      </main>
+      </PageContent>
       <Footer />
     </>
   );

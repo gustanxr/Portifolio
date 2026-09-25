@@ -26,6 +26,14 @@
   .eyebrow { @apply font-mono text-xs font-medium leading-relaxed tracking-[0.12em] text-accent; }
   .section-title { @apply mt-4 font-display text-[clamp(36px,4vw,52px)] leading-[1.12] font-semibold tracking-[-0.04em]; }
   .primary-link { @apply inline-flex min-h-12 items-center justify-center gap-6 rounded-sm bg-accent px-5 py-3 text-sm font-semibold text-background hover:bg-accent-hover; }
+  .trajectory-link { min-height: 58px; padding: 16px 24px; border: 1px solid var(--color-accent-hover); border-radius: 8px; box-shadow: 0 6px 24px #c4a0ff20; transition: background-color 200ms, transform 200ms, box-shadow 200ms; }
+  .trajectory-link:hover { transform: translateY(-3px); box-shadow: 0 10px 30px #c4a0ff35; }
+  .trajectory-link svg { transition: transform 200ms; }
+  .trajectory-link:is(:hover, :focus-visible) svg { transform: translateX(4px); }
+
+  [data-reveal] { opacity: 1; transform: translateY(0); transition: opacity 650ms ease, transform 650ms cubic-bezier(0.22, 1, 0.36, 1); }
+  [data-reveal-pending] { opacity: 0; transform: translateY(28px); }
+  [data-reveal]:focus-within { opacity: 1; transform: none; }
 
   .project-preview {
     position: relative;
@@ -73,11 +81,14 @@
   .interest-list { gap: 24px; }
 
   .page-container { width: calc(100% - 40px); }
+  .trajectory-link { width: 100%; gap: 16px; padding-inline: 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+  .trajectory-link:hover, .trajectory-link:is(:hover, :focus-visible) svg { transform: none; }
 }
 
 @media (max-width: 380px) {

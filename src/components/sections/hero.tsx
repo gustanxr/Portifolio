@@ -8,7 +8,12 @@ export function Hero() {
       <div>
         <p className="eyebrow"><span aria-hidden="true" className="mr-2">&gt;_</span> Oi, eu sou o Gustavo.</p>
         <h1 id="titulo" className="hero-name">Gustavo<br /><span>Fiorillo<span className="text-accent">.</span></span></h1>
-        <p className="mt-5 font-mono text-sm text-accent">Desenvolvimento web & infraestrutura</p>
+        <p className="mt-5 font-mono text-sm text-accent">Engenharia de Software & DevOps</p>
+        <a href={site.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Disponível para vagas. Conversar pelo LinkedIn (abre em nova aba)" className="mt-6 inline-flex max-w-full items-center gap-3 rounded-full border border-accent/50 bg-surface px-4 py-2.5 text-sm font-medium text-foreground hover:border-accent hover:text-accent">
+          <span aria-hidden="true" className="size-2 shrink-0 rounded-full bg-emerald-400" />
+          <span>Disponível para vagas</span>
+          <ArrowUpRightIcon className="size-4 shrink-0" />
+        </a>
         <p className="mt-5 max-w-[480px] text-[17px] leading-[1.8] text-muted">{site.introduction}</p>
         <div className="mt-8 flex flex-wrap items-center gap-7">
           <a className="primary-link" href="#projetos">Ver meus projetos <ArrowUpRightIcon className="size-4" /></a>
@@ -17,7 +22,7 @@ export function Hero() {
       </div>
       <figure className="developer-visual">
         <div aria-hidden="true" className="flex items-center justify-between border-b border-line px-4 py-3 font-mono text-xs text-muted">
-          <span className="text-accent">~/gustanxr</span><span>código · café · estudo</span>
+          <span className="text-accent">~/gustanxr</span><span>projetos · estudos</span>
         </div>
         <Image
           src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/developer-setup.webp`}

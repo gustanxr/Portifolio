@@ -17,7 +17,7 @@ export function Footer() {
   return (
     <footer className="page-container flex flex-wrap items-center justify-between gap-6 border-t border-line py-[30px]">
       <Link className="text-xl font-bold tracking-tight hover:text-accent" href="/#inicio">{site.name}<span className="text-accent">.</span></Link>
-      <p className="text-sm text-muted">Gustavo Fiorillo · Fullstack & DevOps</p>
+      <p className="text-sm text-muted">Gustavo Fiorillo · Engenharia de Software & DevOps</p>
       <a className="text-sm text-muted hover:text-accent" href="#inicio">Voltar ao topo <span aria-hidden="true" className="ml-4 text-accent">↑</span></a>
       <div className="flex w-full flex-wrap items-center gap-x-6 gap-y-4 border-t border-line pt-6">
         <p className="font-mono text-xs tracking-wide text-muted">Desenvolvido com</p>

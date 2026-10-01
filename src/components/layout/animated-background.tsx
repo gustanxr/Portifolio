@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import styles from "./animated-background.module.css";
 
 const circuits = [
@@ -15,35 +12,21 @@ const circuits = [
 const nodes = [[320, 280], [680, 160], [1080, 280], [260, 300], [620, 500], [1080, 320], [440, 520], [840, 740], [1320, 560], [320, 740], [1180, 740]];
 
 export function AnimatedBackground() {
-  const [paused, setPaused] = useState(false);
-
   return (
-    <>
-      <div aria-hidden="true" className={`${styles.background} ${paused ? styles.paused : ""}`}>
-        <div className={styles.glow} />
-        <svg className={styles.circuits} viewBox="0 0 1600 1000" fill="none" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <g stroke="currentColor" strokeWidth="1">
-            {circuits.map((path) => <path key={path} d={path} />)}
-          </g>
-          <g className={styles.signals} stroke="#c4a0ff" strokeWidth="2" strokeLinecap="round" strokeDasharray="5 320">
-            {circuits.map((path) => <path key={path} d={path} />)}
-          </g>
-          <g className={styles.nodes} fill="#c4a0ff">
-            {nodes.map(([x, y]) => <circle key={`${x}-${y}`} cx={x} cy={y} r="3" />)}
-          </g>
-        </svg>
-        <div className={styles.shade} />
-      </div>
-      <button
-        type="button"
-        className={styles.toggle}
-        onClick={() => setPaused((value) => !value)}
-        aria-pressed={paused}
-        aria-label={paused ? "Retomar animação de fundo" : "Pausar animação de fundo"}
-      >
-        <span aria-hidden="true">{paused ? "▶" : "Ⅱ"}</span>
-        {paused ? "Animar fundo" : "Pausar fundo"}
-      </button>
-    </>
+    <div aria-hidden="true" className={styles.background}>
+      <div className={styles.glow} />
+      <svg className={styles.circuits} viewBox="0 0 1600 1000" fill="none" preserveAspectRatio="xMidYMid slice" focusable="false">
+        <g stroke="currentColor" strokeWidth="1">
+          {circuits.map((path) => <path key={path} d={path} />)}
+        </g>
+        <g className={styles.signals} stroke="#c4a0ff" strokeWidth="2" strokeLinecap="round" strokeDasharray="5 320">
+          {circuits.slice(0, 3).map((path) => <path key={path} d={path} />)}
+        </g>
+        <g className={styles.nodes} fill="#c4a0ff">
+          {nodes.map(([x, y]) => <circle key={`${x}-${y}`} cx={x} cy={y} r="3" />)}
+        </g>
+      </svg>
+      <div className={styles.shade} />
+    </div>
   );
 }

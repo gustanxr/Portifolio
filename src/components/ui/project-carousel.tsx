@@ -147,7 +147,7 @@ export function ProjectCarousel({ projects }: { projects: readonly Project[] }) 
               <div className="grid auto-cols-[100%] grid-flow-col items-stretch transition-transform duration-500 ease-in-out motion-reduce:transition-none" style={{ transform: `translateX(-${current * 100}%)` }}>
                 {results.map((project, index) => (
                   <div key={project.slug} role="group" aria-roledescription="slide" aria-label={project.title} aria-hidden={index !== current} inert={index !== current} className="flex min-w-0">
-                    <ProjectCard project={project} />
+                    <ProjectCard key={`${project.slug}-${index === current}`} project={project} active={index === current} />
                   </div>
                 ))}
               </div>

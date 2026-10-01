@@ -1,6 +1,6 @@
 # gustanxr — Portfólio
 
-Portfólio em Next.js App Router, React, TypeScript e Tailwind CSS. Visual com fundo escuro, paleta roxa, títulos sem serifa e detalhes de tipografia monoespaçada. A abertura inclui uma ilustração de uma estação de desenvolvimento. Apresenta os projetos reais, a trajetória e os interesses em Fullstack e DevOps de Gustavo Fiorillo.
+Portfólio em Next.js App Router, React, TypeScript e Tailwind CSS. Visual com fundo escuro, paleta roxa, títulos sem serifa e detalhes de tipografia monoespaçada. A abertura inclui uma ilustração de uma estação de desenvolvimento. Apresenta os projetos reais, a trajetória e os interesses em DevOps e Engenharia de Software de Gustavo Fiorillo.
 
 ## Começar
 
@@ -43,6 +43,7 @@ Os componentes são Server Components por padrão. O carrossel de projetos usa u
 - **Projetos futuros:** adicione itens em `src/data/projects.ts`, seguindo o tipo `Project`. Os campos obrigatórios são `slug`, `title`, `description` e `technologies`; `repositoryUrl` e `liveUrl` são opcionais. O estado “Em breve” é substituído pelos cartões automaticamente.
 - **Ícones dos projetos:** preencha `technologies`, por exemplo `["Java", "React", "TypeScript"]`. Novos ícones podem ser cadastrados em `src/components/ui/technology-icon.tsx`. Os projetos e seções não usam numeração decorativa.
 - **Carrossel e pesquisa:** novos projetos entram automaticamente no carrossel, com um card por vez, setas e avanço a cada 5 segundos. Para mudar o intervalo, ajuste `AUTOPLAY_DELAY` em `src/components/ui/project-carousel.tsx`. O avanço pausa com o mouse sobre o carrossel, foco dentro dele ou pelo botão Pausar; respeita a preferência por movimento reduzido. A busca filtra por título, descrição e tecnologias sem diferenciar maiúsculas e acentos. Também é possível escolher um projeto pelo nome abaixo do carrossel.
+- **Prévia de sites:** o site incorporado ao cartão só carrega quando a pessoa escolhe “Carregar prévia do site”. O link “Visitar projeto” abre o site diretamente.
 
 ## Verificar e compilar
 

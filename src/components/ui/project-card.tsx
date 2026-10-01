@@ -1,30 +1,49 @@
+"use client";
+
+import { useState } from "react";
 import type { Project } from "@/types/project";
 import { TechnologyIcon } from "@/components/ui/technology-icon";
 import { ArrowUpRightIcon } from "@/components/ui/arrow-up-right-icon";
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({ project, active }: { project: Project; active: boolean }) {
+  const [previewLoaded, setPreviewLoaded] = useState(false);
+
   return (
     <article className="mx-auto flex w-full max-w-[626px] min-w-0 flex-col border-t border-accent/50 bg-surface p-6 max-[760px]:p-5">
       {project.liveUrl && (
-        <a
-          href={project.liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`Abrir o site de ${project.title} em nova aba`}
-          className="project-preview group relative mx-auto mb-5 block w-[576px] max-w-full overflow-hidden rounded-md bg-background focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-accent"
-        >
-          <iframe
-            src={project.liveUrl}
-            title={`Prévia ao vivo de ${project.title}`}
-            loading="lazy"
-            tabIndex={-1}
-            aria-hidden="true"
-            className="project-preview-frame pointer-events-none border-0 bg-white"
-          />
-          <span className="absolute right-3 bottom-3 rounded bg-background/90 px-3 py-1.5 text-xs text-accent opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
-            <span className="inline-flex items-center gap-1.5">Abrir site <ArrowUpRightIcon className="size-3.5" /></span>
-          </span>
-        </a>
+        <div className="project-preview relative mx-auto mb-5 w-[576px] max-w-full overflow-hidden rounded-md bg-background">
+          {previewLoaded && active ? (
+            <>
+              <iframe
+                src={project.liveUrl}
+                title={`Prévia ao vivo de ${project.title}`}
+                loading="lazy"
+                tabIndex={-1}
+                aria-hidden="true"
+                className="project-preview-frame pointer-events-none border-0 bg-white"
+              />
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Abrir o site de ${project.title} em nova aba`}
+                className="absolute inset-0 flex items-end justify-end p-3 focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-accent"
+              >
+                <span className="inline-flex items-center gap-1.5 rounded bg-background/90 px-3 py-1.5 text-xs text-accent">Abrir site <ArrowUpRightIcon className="size-3.5" /></span>
+              </a>
+            </>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setPreviewLoaded(true)}
+              aria-label={`Carregar prévia do site ${project.title}`}
+              className="absolute inset-0 flex w-full flex-col items-center justify-center gap-4 bg-[radial-gradient(ellipse_at_center,#352348_0%,#101016_70%)] p-5 text-center focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-accent"
+            >
+              <span className="font-display text-[clamp(24px,5vw,38px)] font-semibold tracking-tight text-foreground">{project.title}</span>
+              <span className="border-b border-accent/50 pb-1 text-sm text-accent">Carregar prévia do site <ArrowUpRightIcon className="ml-1 inline size-4" /></span>
+            </button>
+          )}
+        </div>
       )}
       <p className="eyebrow mb-3">{project.liveUrl ? "Na web" : "Caderno de estudos"}</p>
       <h3 className="font-display text-3xl tracking-tight">{project.title}</h3>
